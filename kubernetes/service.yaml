@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+    - protocol: TCP
+      port: 80  # The port on the cluster
+      targetPort: 80  # The port inside the container (Nginx)
+  type: LoadBalancer  # Use LoadBalancer for cloud, or NodePort for local (e.g., Minikube)

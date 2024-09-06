@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+spec:
+  replicas: 2  # Number of Pods
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp-container
+        image: hapigoluky/myapp:latest  # Replace with your Docker image
+        ports:
+        - containerPort: 80  # Nginx port
+        - containerPort: 8000  # FastAPI port (if you want direct access)
+        env:
+        - name: UVICORN_PORT  # Optional: Set environment variables for FastAPI
+          value: "8000"
