@@ -9,4 +9,5 @@ spec:
     - protocol: TCP
       port: 80  # The port on the cluster
       targetPort: 80  # The port inside the container (Nginx)
+      nodePort: 30000
   type: LoadBalancer  # Use LoadBalancer for cloud, or NodePort for local (e.g., Minikube)
